@@ -1,0 +1,6 @@
+Examen Parcial 2
+
+ Sistema de Gestión de Talleres: Diseña una base de datos para gestionar talleres y participantes, incluyendo inscripciones. 
+ Tablas: `Talleres` (taller_id, nombre, descripcion, fecha, ubicacion), `Participantes` (participante_id, nombre, apellido, email, telefono). 
+ 
+ Por: Eduardo Alvarado
