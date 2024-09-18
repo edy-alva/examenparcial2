@@ -9,7 +9,9 @@ require '../models/talleres.model.php';
 
 //Configurar el ID del evento,  debe venir desde controller
 
-$idTaller = 2;
+
+
+$idTaller = $_GET["Talleres_id"];
 
 $inscripciones = new Inscripciones();
 $participantes = new Participantes();

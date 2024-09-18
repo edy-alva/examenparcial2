@@ -54,6 +54,12 @@ switch ($_GET["op"]) {
         $datos = $talleres->actualizar($talleres_id, $nombre, $descripcion, $fecha, $ubicacion);
         echo json_encode($datos);
         break;
+    case 'imprimir':  
+            $talleres_id = $_POST["talleres_id"];
+            $datos = array();
+            $datos = $talleres->imprimir($talleres_id);
+            echo json_encode($datos);
+            break;
         
     case 'eliminar': 
         $talleres_id = $_POST["talleres_id"];

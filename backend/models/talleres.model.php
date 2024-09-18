@@ -78,4 +78,21 @@ class Talleres
             $con->close();
         }
     }
+    public function imprimir($Talleres_id) 
+    {
+        try {
+            $con = new ClaseConectar();
+            $con = $con->ProcedimientoParaConectar();
+            $cadena = "DELETE FROM `talleres` WHERE `talleres_id`= $Talleres_id";
+            if (mysqli_query($con, $cadena)) {
+                return 1;
+            } else {
+                return $con->error;
+            }
+        } catch (Exception $th) {
+            return $th->getMessage();
+        } finally {
+            $con->close();
+        }
+    }
 }

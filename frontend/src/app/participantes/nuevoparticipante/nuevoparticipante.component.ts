@@ -17,7 +17,7 @@ export class NuevoparticipanteComponent implements OnInit {
   frm_Participante = new FormGroup({
     Nombre: new FormControl('', Validators.required),
     Apellido: new FormControl('', Validators.required),
-    Email: new FormControl('', Validators.required),
+    Email: new FormControl('', [Validators.required,Validators.email]),
     Telefono: new FormControl('', [Validators.required])
   });
   Participantes_id = 0;
@@ -29,7 +29,9 @@ export class NuevoparticipanteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.Participantes_id = parseInt(this.ruta.snapshot.paramMap.get('Participantes_id'));
+    this.Participantes_id = parseInt(this.ruta.snapshot.paramMap.get('Participante_id'));
+console.log('ID: '+this.Participantes_id);
+
     if (this.Participantes_id > 0) {
       this.participanteServicio.uno(this.Participantes_id).subscribe((unparticipante) => {
         this.frm_Participante.controls['Nombre'].setValue(unparticipante.nombre);

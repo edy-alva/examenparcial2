@@ -5,6 +5,10 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InscripcionesService } from 'src/app/Services/inscripciones.service';
 import { IInscripciones } from 'src/app/Interfaces/iinscripciones';
+import { ParticipantesService } from 'src/app/Services/participantes.service';
+import { TalleresService } from 'src/app/Services/talleres.service';
+import { Italleres } from 'src/app/Interfaces/italleres';
+import { IParticipantes } from 'src/app/Interfaces/iparticipantes';
 
 @Component({
   selector: 'app-nuevainscripcion',
@@ -24,11 +28,13 @@ export class NuevainscripcionComponent implements OnInit {
   constructor(
     private inscripcionServicio: InscripcionesService,
     private navegacion: Router,
-    private ruta: ActivatedRoute
+    private ruta: ActivatedRoute,
+    private participantesServicio: ParticipantesService, 
+    private talleresServicio: TalleresService
   ) {}
 
   ngOnInit(): void {
-    this.Inscripciones_id = parseInt(this.ruta.snapshot.paramMap.get('Inscripciones_id'));
+    this.Inscripciones_id = parseInt(this.ruta.snapshot.paramMap.get('Inscripcion_id'));
     if (this.Inscripciones_id > 0) {
       this.inscripcionServicio.uno(this.Inscripciones_id).subscribe((unainscripcion) => {
         this.frm_Inscripcion.controls['Participante'].setValue(unainscripcion.participantes_participantes_id.toString());
@@ -47,6 +53,7 @@ export class NuevainscripcionComponent implements OnInit {
       estado: this.frm_Inscripcion.controls['estado'].value
     };
 
+    
     Swal.fire({
       title: 'Inscripciones',
       text: 'Desea guardar la Inscripcion: ',
@@ -78,6 +85,18 @@ export class NuevainscripcionComponent implements OnInit {
         }
       }
     });
+  }
+
+  devuelveParticipante(idParticipante:number): IParticipantes {
+    let participante: IParticipantes;
+    this.participantesServicio.uno(idParticipante).subscribe((data) => { participante = data; });
+    return participante;
+  }
+  
+  devuelveTaller(idTaller:number): Italleres {
+    let taller: Italleres;
+    this.talleresServicio.uno(idTaller).subscribe((data) => { taller = data; });
+    return taller;
   }
 
 }

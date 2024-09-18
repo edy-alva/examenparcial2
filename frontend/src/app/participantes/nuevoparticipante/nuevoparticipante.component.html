@@ -28,12 +28,13 @@
             <label class="form-label" for="Email">Email</label>
             <input type="text" formControlName="Email" class="form-control" id="Email" />
             <div *ngIf="frm_Participante.get('Email').invalid && frm_Participante.get('Email').touched">
-              <small *ngIf="frm_Participante.get('Email').hasError('required')" style="color: red">La email del participante es requerido</small>
+              <small *ngIf="frm_Participante.get('Email').hasError('required')" style="color: red">El email del participante es requerido</small>
+              <small *ngIf="frm_Participante.get('Email').hasError('email')" style="color: red">El email no es valido</small>
             </div>
           </div>
           <div class="form-group mb-3">
             <label class="form-label" for="Telefono">Telefono</label>
-            <input type="text" class="form-control" formControlName="Telefono" id="Telefono" />
+            <input type="number" class="form-control" formControlName="Telefono" id="Telefono" maxlength="10" />
             <div *ngIf="frm_Participante.get('Telefono').invalid && frm_Participante.get('Telefono').touched">
               <small *ngIf="frm_Participante.get('Telefono').hasError('required')" style="color: red">La Telefono es requerida</small>
             </div>

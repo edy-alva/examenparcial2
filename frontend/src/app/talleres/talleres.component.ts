@@ -44,5 +44,22 @@ export class TalleresComponent {
     });
   }
 
-  imprimir(Talleres_id) {}
+  imprimir(Talleres_id) {
+    Swal.fire({
+      title: 'talleres',
+      text: 'Esta seguro que desea imprimir el listado!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Imprimir Listado de Participantes al Taller'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.talleresServicio.imprimir(Talleres_id).subscribe((data) => {
+          Swal.fire('talleres', 'El fue impreso.', 'success');
+        });
+      }
+    });
+
+  }
 }
