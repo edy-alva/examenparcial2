@@ -24,13 +24,23 @@ class Inscripciones
         return $datos;
     }
 
-    public function insertar($Estado, $Fecha, $Talleres_talleres_id, $Participantes_participantes_id) 
+    public function listadoInscripcionesTaller($Taller_id) 
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoParaConectar();
+        $cadena = "SELECT * FROM `inscripciones` WHERE `talleres_talleres_id`=$Taller_id";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+
+    public function insertar($Estado, $Talleres_talleres_id, $Participantes_participantes_id) 
     {
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoParaConectar();
-            $cadena = "INSERT INTO `inscripciones`(`estado`,`fecha`,`talleres_talleres_id`,`participantes_participantes_id`) 
-            VALUES ('$Estado', '$Fecha', '$Talleres_talleres_id', '$Participantes_participantes_id')";  
+            $cadena = "INSERT INTO `inscripciones`(`estado`,`talleres_talleres_id`,`participantes_participantes_id`) 
+            VALUES ('$Estado', '$Talleres_talleres_id', '$Participantes_participantes_id')";  
             if (mysqli_query($con, $cadena)) {
                 return $con->insert_id;
             } else {
@@ -42,13 +52,13 @@ class Inscripciones
             $con->close();
         }
     }
-    public function actualizar($Inscripciones_id, $Estado, $Fecha, $Talleres_talleres_id, $Participantes_participantes_id) 
+    public function actualizar($Inscripciones_id, $Estado, $Talleres_talleres_id, $Participantes_participantes_id) 
     {
         try {
             $con = new ClaseConectar($Inscripciones_id);
             $con = $con->ProcedimientoParaConectar();
             $cadena = "UPDATE `inscripciones` 
-            SET `estado`='$Estado',`fecha`='$Fecha',`talleres_talleres_id`='$Talleres_talleres_id',`participantes_participantes_id`='$Participantes_participantes_id'
+            SET `estado`='$Estado',`talleres_talleres_id`='$Talleres_talleres_id',`participantes_participantes_id`='$Participantes_participantes_id'
             WHERE `inscripciones_id` = $Inscripciones_id";
             if (mysqli_query($con, $cadena)) {
                 return $Inscripciones_id;

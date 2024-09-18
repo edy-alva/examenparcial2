@@ -36,22 +36,22 @@ switch ($_GET["op"]) {
         
     case 'insertar':  
         $Estado = $_POST["Estado"];
-        $Fecha = $_POST["Fecha"];
+
         $Talleres_talleres_id = $_POST["Talleres_talleres_id"];
         $Participantes_participantes_id = $_POST["Participantes_participantes_id"];
         $datos = array();
-        $datos = $inscripciones->insertar($Estado, $Fecha, $Talleres_talleres_id, $Participantes_participantes_id);
+        $datos = $inscripciones->insertar($Estado, $Talleres_talleres_id, $Participantes_participantes_id);
         echo json_encode($datos);
         break;
         
     case 'actualizar':  
         $Inscripciones_id = $_POST["Inscripciones_id"];
         $Estado = $_POST["Estado"];
-        $Fecha = $_POST["Fecha"];
+
         $Talleres_talleres_id = $_POST["Talleres_talleres_id"];
         $Participantes_participantes_id = $_POST["Participantes_participantes_id"];
         $datos = array();
-        $datos = $inscripciones->actualizar($Inscripciones_id, $Estado, $Fecha, $Talleres_talleres_id, $Participantes_participantes_id);
+        $datos = $inscripciones->actualizar($Inscripciones_id, $Estado, $Talleres_talleres_id, $Participantes_participantes_id);
         echo json_encode($datos);
         break;
         

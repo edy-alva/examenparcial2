@@ -8,10 +8,10 @@ $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "OPTIONS") {
     die();
 }
-//TODO: controlador de TALLERES
+//TODO: controlador de talleres
 require_once('../models/talleres.model.php');
 //error_reporting(0);
-$talleres = new Talleres;
+$talleres = new talleres;
 
 switch ($_GET["op"]) {
         //TODO: operaciones de talleres
@@ -27,38 +27,38 @@ switch ($_GET["op"]) {
         echo json_encode($todos);
         break;
     case 'uno': 
-        $Talleres_id = $_POST["Talleres_id"];
+        $talleres_id = $_POST["talleres_id"];
         $datos = array();
-        $datos = $talleres->uno($Talleres_id);
+        $datos = $talleres->uno($talleres_id);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
         
     case 'insertar':  
-        $Nombre = $_POST["Nombre"];
-        $Descripcion = $_POST["Descripcion"];
-        $Fecha = $_POST["Fecha"];
-        $Ubicacion = $_POST["Ubicacion"];
+        $nombre = $_POST["nombre"];
+        $descripcion = $_POST["descripcion"];
+        $fecha = $_POST["fecha"];
+        $ubicacion = $_POST["ubicacion"];
         $datos = array();
-        $datos = $talleres->insertar($Nombre, $Descripcion, $Fecha, $Ubicacion);
+        $datos = $talleres->insertar($nombre, $descripcion, $fecha, $ubicacion);
         echo json_encode($datos);
         break;
         
     case 'actualizar':  
-        $Talleres_id = $_POST["Talleres_id"];
-        $Nombre = $_POST["Nombre"];
-        $Descripcion = $_POST["Descripcion"];
-        $Fecha = $_POST["Fecha"];
-        $Ubicacion = $_POST["Ubicacion"];
+        $talleres_id = $_POST["talleres_id"];
+        $nombre = $_POST["nombre"];
+        $descripcion = $_POST["descripcion"];
+        $fecha = $_POST["fecha"];
+        $ubicacion = $_POST["ubicacion"];
         $datos = array();
-        $datos = $talleres->actualizar($Talleres_id, $Nombre, $Descripcion, $Fecha, $Ubicacion);
+        $datos = $talleres->actualizar($talleres_id, $nombre, $descripcion, $fecha, $ubicacion);
         echo json_encode($datos);
         break;
         
     case 'eliminar': 
-        $Talleres_id = $_POST["Talleres_id"];
+        $talleres_id = $_POST["talleres_id"];
         $datos = array();
-        $datos = $talleres->eliminar($Talleres_id);
+        $datos = $talleres->eliminar($talleres_id);
         echo json_encode($datos);
         break;
 }

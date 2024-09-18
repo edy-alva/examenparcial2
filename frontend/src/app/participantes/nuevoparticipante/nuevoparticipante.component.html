@@ -1,0 +1,66 @@
+<div class="card my-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="mb-0">
+          {{ titulo }}
+          <!--Interpolacion
+            sirve para enviar datos desde el .ts hacia el html
+            -->
+        </h3>
+      </div>
+      <form [formGroup]="frm_Participante" (ngSubmit)="grabar()">
+        <div class="row">
+          <div class="form-group mb-3">
+            <label class="form-label" for="Nombre">Nombre</label>
+            <input formControlName="Nombre" type="text" class="form-control" id="Nombre" placeholder="Ingrese el Nombre del Participante" />
+            <div *ngIf="frm_Participante.get('Nombre').invalid && frm_Participante.get('Nombre').touched">
+              <small *ngIf="frm_Participante.get('Nombre').hasError('required')" style="color: red">El nombre es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="Apellido">Apellido</label>
+            <input formControlName="Apellido" type="text" class="form-control" id="Apellido" placeholder="Ingrese el Apellido del participante" />
+            <div *ngIf="frm_Participante.get('Apellido').invalid && frm_Participante.get('Apellido').touched">
+              <small *ngIf="frm_Participante.get('Apellido').hasError('required')" style="color: red">El Apellido del participante es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="Email">Email</label>
+            <input type="text" formControlName="Email" class="form-control" id="Email" />
+            <div *ngIf="frm_Participante.get('Email').invalid && frm_Participante.get('Email').touched">
+              <small *ngIf="frm_Participante.get('Email').hasError('required')" style="color: red">La email del participante es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="Telefono">Telefono</label>
+            <input type="text" class="form-control" formControlName="Telefono" id="Telefono" />
+            <div *ngIf="frm_Participante.get('Telefono').invalid && frm_Participante.get('Telefono').touched">
+              <small *ngIf="frm_Participante.get('Telefono').hasError('required')" style="color: red">La Telefono es requerida</small>
+            </div>
+          </div>
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="frm_Participante.invalid">Grabar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!--
+    IMPORTAR => FORMSMODULE  APP.MODULE.TS ||  NUEVOPROVEEDOR.COMPONENT.TS
+    
+    
+    
+    
+    
+    INTRPOLACION => DESDE EL TS AL HTML
+    {{ }} 
+    PARTICIPANTES => EJECUTAR FUNCIONES EN EL TS
+    ()
+    DATA BINDING => DESDE EL HTML AL TS
+    []
+    TWO WAY BIDING => ENVIADO DE DATOS DESDE EL HTML AL TS Y DESDE EL TS AL HTML
+    [()]
+    -->
+  
+
