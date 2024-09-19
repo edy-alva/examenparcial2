@@ -55,7 +55,9 @@ export class TalleresService {
     return this.lector.post<string>(this.apiurl + 'actualizar', formData);
   }
   imprimir(talleres_id: number): any {
-    let parametro = talleres_id.toString();
-      return this.lector.get<any>(this.apiReporte + parametro);
+    console.log(talleres_id);
+    const formData = new FormData();
+    formData.append('Talleres_id', talleres_id.toString());
+    return this.lector.post<number>(this.apiurl + 'imprimir', formData);
       }
 }

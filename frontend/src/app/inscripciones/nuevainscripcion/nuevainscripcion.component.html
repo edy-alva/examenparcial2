@@ -11,22 +11,22 @@
       <form [formGroup]="frm_Inscripcion" (ngSubmit)="grabar()">
         <div class="row">
           <div class="form-group mb-3">
-            <label class="form-label" for="Participantes_participantes_id">Participantes_participantes_id</label>
-            <input formControlName="Participantes_participantes_id" type="text" class="form-control" id="Participantes_participantes_id" placeholder="Ingrese el Participantes_participantes_id del Inscripcion" />
-            <div *ngIf="frm_Inscripcion.get('Participantes_participantes_id').invalid && frm_Inscripcion.get('Participantes_participantes_id').touched">
-              <small *ngIf="frm_Inscripcion.get('Participantes_participantes_id').hasError('required')" style="color: red">El participantes_participantes_id es requerido</small>
+            <label class="form-label" for="Participante">Participante</label>
+            <input formControlName="Participante" type="text" class="form-control" id="Participantes" placeholder="Ingrese el Participante" />
+            <div *ngIf="frm_Inscripcion.get('Participante').invalid && frm_Inscripcion.get('Participante').touched">
+              <small *ngIf="frm_Inscripcion.get('Participante').hasError('required')" style="color: red">El Participante es requerido</small>
             </div>
           </div>
           <div class="form-group mb-3">
-            <label class="form-label" for="Talleres_talleres_id">Talleres_talleres_id</label>
-            <input formControlName="Talleres_talleres_id" type="text" class="form-control" id="Talleres_talleres_id" placeholder="Ingrese el Talleres_talleres_id del inscripcion" />
-            <div *ngIf="frm_Inscripcion.get('Talleres_talleres_id').invalid && frm_Inscripcion.get('Talleres_talleres_id').touched">
-              <small *ngIf="frm_Inscripcion.get('Talleres_talleres_id').hasError('required')" style="color: red">El Talleres_talleres_id del inscripcion es requerido</small>
+            <label class="form-label" for="Taller">Taller</label>
+            <input formControlName="Taller" type="text" class="form-control" id="Taller" placeholder="Seleccione el Taller" />
+            <div *ngIf="frm_Inscripcion.get('Taller').invalid && frm_Inscripcion.get('Taller').touched">
+              <small *ngIf="frm_Inscripcion.get('Taller').hasError('required')" style="color: red">El Taller es requerido</small>
             </div>
           </div>
           <div class="form-group mb-3">
             <label class="form-label" for="Estado">Estado</label>
-            <input type="date" formControlName="Estado" class="form-control" id="Estado" />
+            <input type="text" formControlName="Estado" class="form-control" id="Estado" />
             <div *ngIf="frm_Inscripcion.get('Estado').invalid && frm_Inscripcion.get('Estado').touched">
               <small *ngIf="frm_Inscripcion.get('Estado').hasError('required')" style="color: red">La estado del inscripcion es requerido</small>
             </div>

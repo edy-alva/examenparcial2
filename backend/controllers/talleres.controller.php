@@ -10,6 +10,7 @@ if ($method == "OPTIONS") {
 }
 //TODO: controlador de talleres
 require_once('../models/talleres.model.php');
+
 //error_reporting(0);
 $talleres = new talleres;
 
@@ -54,12 +55,6 @@ switch ($_GET["op"]) {
         $datos = $talleres->actualizar($talleres_id, $nombre, $descripcion, $fecha, $ubicacion);
         echo json_encode($datos);
         break;
-    case 'imprimir':  
-            $talleres_id = $_POST["talleres_id"];
-            $datos = array();
-            $datos = $talleres->imprimir($talleres_id);
-            echo json_encode($datos);
-            break;
         
     case 'eliminar': 
         $talleres_id = $_POST["talleres_id"];

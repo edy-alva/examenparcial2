@@ -48,8 +48,8 @@ export class NuevainscripcionComponent implements OnInit {
   grabar() {
     let inscripcion: IInscripciones = {
       inscripciones_id: this.Inscripciones_id,
-      participantes_participantes_id: this.frm_Inscripcion.controls['participantes_participantes_id'].value,
-      talleres_talleres_id: this.frm_Inscripcion.controls['talleres_talleres_id'].value,
+      participantes_participantes_id: parseInt(this.frm_Inscripcion.controls['Participante'].value),
+      talleres_talleres_id: parseInt(this.frm_Inscripcion.controls['Taller'].value),
       estado: this.frm_Inscripcion.controls['estado'].value
     };
 

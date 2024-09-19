@@ -10,7 +10,10 @@ if ($method == "OPTIONS") {
 }
 //TODO: controlador de INSCRIPCIONES
 require_once('../models/inscripciones.model.php');
+require_once('../reports/participantes.report.php');
 //error_reporting(0);
+
+$reporte = new Reportes;
 $inscripciones = new Inscripciones;
 
 switch ($_GET["op"]) {
@@ -60,5 +63,11 @@ switch ($_GET["op"]) {
         $datos = array();
         $datos = $inscripciones->eliminar($Inscripciones_id);
         echo json_encode($datos);
+        break;
+
+    case 'imprimir':  
+        $talleres_id = $_POST["Talleres_id"];
+        $datos = array();
+        $reporte->generaReporte($talleres_id);
         break;
 }
