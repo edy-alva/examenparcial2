@@ -101,7 +101,7 @@ require_once '../models/talleres.model.php';
         $pdf->SetFont('Arial','',8);
 
         $pdf->Cell(20, 10, 'Pagina '.$pdf->PageNo(), 0, 0, 'C');
-        $pdf->Output('', 'listaParticipantes.pdf');
+        $pdf->Output();
  /*   
 }
 

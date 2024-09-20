@@ -4,6 +4,7 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { TalleresService } from '../Services/talleres.service';
 import Swal from 'sweetalert2';
 import { Italleres } from '../Interfaces/italleres';
+import { log } from 'console';
 
 @Component({
   selector: 'app-talleres',
@@ -58,7 +59,8 @@ export class TalleresComponent {
         this.talleresServicio.imprimir(Talleres_id).subscribe((data) => {
 
       const blob = new Blob([data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
+      const url = 'https://localhost/examen/examenparcial2/backend/reports/participantes.report.php?Talleres_id='+Talleres_id;//window.URL.createObjectURL(blob);
+      console.log(url);
       const link = document.createElement('a');
       link.href = url;
       link.download = 'listaParticipantes.pdf'; // Nombre del archivo que se descargará
