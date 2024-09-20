@@ -56,10 +56,21 @@ export class TalleresComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.talleresServicio.imprimir(Talleres_id).subscribe((data) => {
-          Swal.fire('talleres', 'El fue impreso.', 'success');
+
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'listaParticipantes.pdf'; // Nombre del archivo que se descargará
+      link.click();
+      window.URL.revokeObjectURL(url); // Limpiamos la URL creada
+      Swal.fire('talleres', 'El reporte fue impreso.', 'success');
+    },(error) => {
+          console.error('Error al descargar el PDF', error);
         });
       }
     });
+
 
   }
 }

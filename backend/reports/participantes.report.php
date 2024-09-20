@@ -6,13 +6,17 @@ require_once '../models/inscripciones.model.php';
 require_once '../models/participantes.model.php';
 require_once '../models/talleres.model.php';
 
-class Reportes
+/*class Reportes
 {
 
     public function generaReporte($Taller_id)
     {
+ //$idTaller = $Taller_id;
 
-        $idTaller = $Taller_id;//$_GET["Talleres_id"];
+*/
+       
+
+        $idTaller = $_GET["Talleres_id"];
 
         $inscripciones = new Inscripciones();
         $participantes = new Participantes();
@@ -97,8 +101,10 @@ class Reportes
         $pdf->SetFont('Arial','',8);
 
         $pdf->Cell(20, 10, 'Pagina '.$pdf->PageNo(), 0, 0, 'C');
-        $pdf->Output('D', 'listaParticipantes.pdf');
-    
+        $pdf->Output('', 'listaParticipantes.pdf');
+ /*   
 }
 
 }
+
+*/

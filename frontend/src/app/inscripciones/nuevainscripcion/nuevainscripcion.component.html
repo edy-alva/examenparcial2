@@ -26,7 +26,17 @@
           </div>
           <div class="form-group mb-3">
             <label class="form-label" for="Estado">Estado</label>
+            <select id="Estado" formControlName="Estado" class="form-control">
+              @for (option of options; track $index) {
+                <option [value]="$index" >{{ option }}</option>
+                  $index + 1 
+              }
+            </select>
+
+
+ <!--
             <input type="text" formControlName="Estado" class="form-control" id="Estado" />
+    -->         
             <div *ngIf="frm_Inscripcion.get('Estado').invalid && frm_Inscripcion.get('Estado').touched">
               <small *ngIf="frm_Inscripcion.get('Estado').hasError('required')" style="color: red">La estado del inscripcion es requerido</small>
             </div>

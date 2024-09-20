@@ -23,6 +23,10 @@ export class NuevainscripcionComponent implements OnInit {
     Participante: new FormControl('', Validators.required),
     Estado: new FormControl('', Validators.required),
   });
+
+  options: string[] = ['Reservado', 'Confirmado', 'Cancelado'];
+
+
   Inscripciones_id = 0;
   titulo = 'Nueva Inscripcion';
   constructor(
@@ -35,6 +39,7 @@ export class NuevainscripcionComponent implements OnInit {
 
   ngOnInit(): void {
     this.Inscripciones_id = parseInt(this.ruta.snapshot.paramMap.get('Inscripcion_id'));
+    console.log(this.Inscripciones_id);
     if (this.Inscripciones_id > 0) {
       this.inscripcionServicio.uno(this.Inscripciones_id).subscribe((unainscripcion) => {
         this.frm_Inscripcion.controls['Participante'].setValue(unainscripcion.participantes_participantes_id.toString());
@@ -50,7 +55,7 @@ export class NuevainscripcionComponent implements OnInit {
       inscripciones_id: this.Inscripciones_id,
       participantes_participantes_id: parseInt(this.frm_Inscripcion.controls['Participante'].value),
       talleres_talleres_id: parseInt(this.frm_Inscripcion.controls['Taller'].value),
-      estado: this.frm_Inscripcion.controls['estado'].value
+      estado: parseInt(this.frm_Inscripcion.controls['Estado'].value)
     };
 
     

@@ -9,6 +9,7 @@ import { Italleres } from '../Interfaces/italleres';
 })
 export class TalleresService {
   apiurl = 'https://localhost/examen/examenparcial2/backend/controllers/talleres.controller.php?op=';
+  //apiReporte = 'https://localhost/examen/examenparcial2/backend/inscripciones.controller.php?op=';
   apiReporte = 'https://localhost/examen/examenparcial2/backend/reports/participantes.report.php?Talleres_id=';
   constructor(private lector: HttpClient) {}
 
@@ -54,10 +55,10 @@ export class TalleresService {
     console.log(formData);
     return this.lector.post<string>(this.apiurl + 'actualizar', formData);
   }
-  imprimir(talleres_id: number): any {
-    console.log(talleres_id);
-    const formData = new FormData();
-    formData.append('Talleres_id', talleres_id.toString());
-    return this.lector.post<number>(this.apiurl + 'imprimir', formData);
-      }
+  imprimir(talleres_id: number) {
+    //const formData = new FormData();
+    //formData.append('Talleres_id', talleres_id.toString());
+    //return this.lector.post<any>(this.apiurl + 'imprimir', formData,);
+    return this.lector.get(this.apiurl + talleres_id, { responseType: 'blob' });    
+  }
 }

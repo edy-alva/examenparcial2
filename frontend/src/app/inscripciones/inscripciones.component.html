@@ -11,8 +11,8 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Taller</th>
                     <th>Participante</th>
+                    <th>Taller</th>
                     <th >Estado</th>
                     <th></th>
                   </tr>
@@ -23,7 +23,7 @@
                       <td>{{ $index + 1 }}</td>
                       <td>{{ inscripcion.participantes_participantes_id }}</td>
                       <td>{{ inscripcion.talleres_talleres_id }}</td>
-                      <td>{{ inscripcion.estado }}</td>
+                      <td>{{ inscripcion.estado == 0 ? 'Reservado': inscripcion.estado == 1 ? 'Confirmado': 'Cancelado' }}</td>
                       <td>
                         <button type="button" class="btn btn-outline-success" [routerLink]="['/editarinscripcion/', inscripcion.inscripciones_id]">
                             Editar
